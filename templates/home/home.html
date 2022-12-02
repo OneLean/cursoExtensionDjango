@@ -1,0 +1,168 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+
+{% block page_content %}
+
+<!-- AQUI INCLUIMOS EL CARROUSEL DE IMAGENES -->
+{% include 'home/carousel.html' %}
+
+
+
+<p class="my-4 ml-14 text-gray-500 text-2xl font-bold">Ofertas</p>
+<hr class="my-6 mt-2 border-gray-200 mx-auto w-11/12 max-w-7xl lg:my-8" />
+<section class="mt-2 mx-auto max-w-7xl px-3 sm:px-6 py-2 container grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 ">
+
+    <div class="max-w bg-white rounded-lg shadow-md col-span-1  hover:shadow-lg hover:shadow-black border-b-4 border-blue-700">
+        <a href="#">
+            <img class="rounded-t-lg" src="{% static 'img/img1.jpg' %}" alt="" />
+        </a>
+        <div class="p-4">
+            <a href="#">
+                <h5 class="mb-2 text-2xl font-medium tracking-tight text-gray-900">$ 1.499</h5>
+            </a>
+            <p class="mb-3 font-normal text-gray-700 ">Protector Silicona Mando Play 4 Joystick Ps4</p>
+            <div class="grid grid-cols-7 gap-1">
+                <div class="col-span-3 border-none hover:border-blue-700 hover:bg-blue-700 text-gray-500 hover:text-white rounded-full">
+                    <button type="button" class="h-10 font-medium rounded-full text-sm p-2 text-center inline-flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        <span class="p-2">Ver</span>
+                    </button>
+                </div>
+                <div class="col-span-4 border-none hover:border-blue-700 hover:bg-blue-700  text-gray-500 hover:text-white rounded-full">
+                    <button type="button" class="h-10 font-medium rounded-full text-sm pl-2 text-center inline-flex items-center">
+                        <svg aria-hidden="true" class="mr-1 ml-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path></svg>
+                        <span class="p-1">Comprar</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="max-w bg-white rounded-lg shadow-md col-span-1  hover:shadow-lg hover:shadow-black border-b-4 border-blue-700">
+        <a href="#">
+            <img class="rounded-t-lg" src="{% static 'img/img1.jpg' %}" alt="" />
+        </a>
+        <div class="p-4">
+            <a href="#">
+                <h5 class="mb-2 text-2xl font-medium tracking-tight text-gray-900">$ 1.499</h5>
+            </a>
+            <p class="mb-3 font-normal text-gray-700 ">Protector Silicona Mando Play 4 Joystick Ps4</p>
+            <div class="grid grid-cols-7 gap-1">
+                <div class="col-span-3 border-none hover:border-blue-700 hover:bg-blue-700 text-gray-500 hover:text-white rounded-full">
+                    <button type="button" class="h-10 font-medium rounded-full text-sm p-2 text-center inline-flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        <span class="p-2">Ver</span>
+                    </button>
+                </div>
+                <div class="col-span-4 border-none hover:border-blue-700 hover:bg-blue-700  text-gray-500 hover:text-white rounded-full">
+                    <button type="button" class="h-10 font-medium rounded-full text-sm pl-2 text-center inline-flex items-center">
+                        <svg aria-hidden="true" class="mr-1 ml-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path></svg>
+                        <span class="p-1">Comprar</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="max-w bg-white rounded-lg shadow-md col-span-1  hover:shadow-lg hover:shadow-black border-b-4 border-blue-700">
+        <a href="#">
+            <img class="rounded-t-lg" src="{% static 'img/img1.jpg' %}" alt="" />
+        </a>
+        <div class="p-4">
+            <a href="#">
+                <h5 class="mb-2 text-2xl font-medium tracking-tight text-gray-900">$ 1.499</h5>
+            </a>
+            <p class="mb-3 font-normal text-gray-700 ">Protector Silicona Mando Play 4 Joystick Ps4</p>
+            <div class="grid grid-cols-7 gap-1">
+                <div class="col-span-3 border-none hover:border-blue-700 hover:bg-blue-700 text-gray-500 hover:text-white rounded-full">
+                    <button type="button" class="h-10 font-medium rounded-full text-sm p-2 text-center inline-flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        <span class="p-2">Ver</span>
+                    </button>
+                </div>
+                <div class="col-span-4 border-none hover:border-blue-700 hover:bg-blue-700  text-gray-500 hover:text-white rounded-full">
+                    <button type="button" class="h-10 font-medium rounded-full text-sm pl-2 text-center inline-flex items-center">
+                        <svg aria-hidden="true" class="mr-1 ml-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path></svg>
+                        <span class="p-1">Comprar</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="max-w bg-white rounded-lg shadow-md col-span-1  hover:shadow-lg hover:shadow-black border-b-4 border-blue-700">
+        <a href="#">
+            <img class="rounded-t-lg" src="{% static 'img/img1.jpg' %}" alt="" />
+        </a>
+        <div class="p-4">
+            <a href="#">
+                <h5 class="mb-2 text-2xl font-medium tracking-tight text-gray-900">$ 1.499</h5>
+            </a>
+            <p class="mb-3 font-normal text-gray-700 ">Protector Silicona Mando Play 4 Joystick Ps4</p>
+            <div class="grid grid-cols-7 gap-1">
+                <div class="col-span-3 border-none hover:border-blue-700 hover:bg-blue-700 text-gray-500 hover:text-white rounded-full">
+                    <button type="button" class="h-10 font-medium rounded-full text-sm p-2 text-center inline-flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        <span class="p-2">Ver</span>
+                    </button>
+                </div>
+                <div class="col-span-4 border-none hover:border-blue-700 hover:bg-blue-700  text-gray-500 hover:text-white rounded-full">
+                    <button type="button" class="h-10 font-medium rounded-full text-sm pl-2 text-center inline-flex items-center">
+                        <svg aria-hidden="true" class="mr-1 ml-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path></svg>
+                        <span class="p-1">Comprar</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="max-w bg-white rounded-lg shadow-md col-span-1  hover:shadow-lg hover:shadow-black border-b-4 border-blue-700">
+        <a href="#">
+            <img class="rounded-t-lg" src="{% static 'img/img1.jpg' %}" alt="" />
+        </a>
+        <div class="p-4">
+            <a href="#">
+                <h5 class="mb-2 text-2xl font-medium tracking-tight text-gray-900">$ 1.499</h5>
+            </a>
+            <p class="mb-3 font-normal text-gray-700 ">Protector Silicona Mando Play 4 Joystick Ps4</p>
+            <div class="grid grid-cols-7 gap-1">
+                <div class="col-span-3 border-none hover:border-blue-700 hover:bg-blue-700 text-gray-500 hover:text-white rounded-full">
+                    <button type="button" class="h-10 font-medium rounded-full text-sm p-2 text-center inline-flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        <span class="p-2">Ver</span>
+                    </button>
+                </div>
+                <div class="col-span-4 border-none hover:border-blue-700 hover:bg-blue-700  text-gray-500 hover:text-white rounded-full">
+                    <button type="button" class="h-10 font-medium rounded-full text-sm pl-2 text-center inline-flex items-center">
+                        <svg aria-hidden="true" class="mr-1 ml-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path></svg>
+                        <span class="p-1">Comprar</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     
+    
+      
+</section>
+
+
+
+{% endblock %}

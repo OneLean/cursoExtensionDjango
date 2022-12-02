@@ -1,0 +1,226 @@
+<!--
+    AQUI SE ENCUENTRA EL CODIGO DE LA BARRA DE NAVEGACION
+    QUE SE INCRUSTA EN EL HOME.HTML
+-->
+<navbar class="bg-blue-200">
+    <div class="mx-auto max-w-7xl px-3 sm:px-6 py-2 grid grid-cols-3 ">
+      <!-- ESTE DIV ES EL BUSCADOR -->
+    <a href="http://127.0.0.1:8000/">
+      <div class="ml-3 mt-2 hidden sm:inline-flex">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"  class="stroke-blue-700 w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+        </svg>
+        <div class="text-xl font-semibold whitespace-nowrap text-slate-600 pl-3">
+          PowerMarket
+        </div>
+      </div>
+    </a>
+      <div class="col-start-1 col-span-3 sm:col-start-2 sm:col-span-2 ">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="absolute mt-2 ml-2 w-5 h-5 stroke-gray-500">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+        </svg>
+        <input class="italic w-full shadow shadow-gray-300 rounded-lg pl-11 border-slate-200 text-sm" type="text" placeholder="Buscar productos...">
+      </div>
+    </div>
+
+    <div class="relative">
+        <div class="mx-auto max-w-7xl px-3 sm:px-6">
+          <div class="flex items-center justify-between border-b-2 border-gray-100 py-2 md:justify-start md:space-x-10">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="stroke-cyan-500 w-6 h-6 sm:hidden">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+            </svg>
+            <div class="sm:hidden font-bold text-slate-600 pl-3">
+              PowerMarket
+            </div>
+            <div class="-my-2 -mr-2 md:hidden">
+              <button type="button"  onclick="ocultarMostrarMenu()" class="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-expanded="false">
+                <span class="sr-only">Open menu</span>
+                <!-- Heroicon name: MENU -->
+                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+              </button>
+              <button type="button" class="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-expanded="false">
+                <span class="sr-only">Open menu</span>
+                <!-- Heroicon name: CARRITO -->
+                <svg aria-hidden="true" class="mr-1 ml-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path></svg>
+              </button>
+            </div>
+            <nav  class="hidden space-x-10 md:flex">
+              <div class="relative">
+                <!-- Item active: "text-gray-900", Item inactive: "text-gray-500" -->
+                <button type="button" onclick="ocultarMostrar()"  onmouseenter="mostrarCategorias()" class="text-gray-500 group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900" aria-expanded="false">
+                  <span class="text-sm">Categorias</span>
+                  <svg class="text-gray-400 ml-2 h-5 w-5 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                  </svg>
+                </button>
+      
+                <!--
+                  'Solutions' flyout menu, show/hide based on flyout menu state.
+      
+                  Entering: "transition ease-out duration-200"
+                    From: "opacity-0 translate-y-1"
+                    To: "opacity-100 translate-y-0"
+                  Leaving: "transition ease-in duration-150"
+                    From: "opacity-100 translate-y-0"
+                    To: "opacity-0 translate-y-1"
+                -->
+                <div onmouseleave="ocultarCategorias()" id="obj1" class="hidden absolute z-10 mt-6 w-max max-w-md transform px-2 transition ease-out duration-200 sm:px-0 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2 ">
+                  <div class="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
+                    <div class="relative grid bg-white px-4 py-5 sm:gap-8 sm:p-4">
+                      <a href="#" class="-m-3 py-2 flex items-start rounded-lg p-3 text-gray-600 hover:text-white hover:bg-blue-700">
+                          <p class="text-sm">Notebooks & Computadoras</p>
+                      </a>
+                      <a href="#" class="-m-3 py-2 flex items-start rounded-lg p-3 text-gray-600 hover:text-white hover:bg-blue-700">
+                        <div>
+                          <p class="text-sm">Almacenamiento</p>
+                        </div>
+                      </a>
+                      <a href="#" class="-m-3 py-2 flex items-start rounded-lg p-3 text-gray-600 hover:text-white hover:bg-blue-700">
+                        <p class="text-sm">Periféricos</p>
+                      </a>
+      
+                      <a href="#" class="-m-3 py-2 flex items-start rounded-lg p-3 text-gray-600 hover:text-white hover:bg-blue-700">
+                          <p class="text-sm">Motherboards</p>
+                      </a>
+      
+                      <a href="#" class="-m-3 py-2 flex items-start rounded-lg p-3 text-gray-600 hover:text-white hover:bg-blue-700">
+                          <p class="text-sm">Consolas de videojuegos</p>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <a href="#" class="text-sm font-medium text-gray-500 hover:text-gray-900 mt-1">Ofertas</a>
+              <a href="#" class="text-sm font-medium text-gray-500 hover:text-gray-900 mt-1">Moda</a>
+              <a href="#" class="text-sm font-medium text-gray-500 hover:text-gray-900 mt-1">Ayuda</a>
+              
+
+            </nav>
+            <div class="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
+              <a href="#" class="whitespace-nowrap text-sm font-medium text-gray-500 hover:text-gray-900">Ingresar</a>
+              <a href="#" class="transition-all ease-in duration-150
+                        ml-8 inline-flex items-center justify-center
+                        whitespace-nowrap rounded-lg border border-2
+                        border-blue-200 hover:bg-gradient-to-r
+                        hover:from-cyan-500 hover:to-blue-500
+                        px-3 py-2 text-sm font-medium text-gray-600
+                        hover:text-white shadow-sm mr-2">Regístrate</a>
+                        <button type="button" class="inline-flex items-center 
+                                       justify-center rounded-full 
+                                       bg-white p-3 text-gray-400
+                                       hover:bg-gray-100 hover:text-blue-700 
+                                       " aria-expanded="false">
+                          <span class="sr-only">Open menu</span>
+                          <!-- Heroicon name: CARRITO -->
+                          <svg aria-hidden="true" class="mr-1 ml-1 w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path></svg>
+                        </button>
+            </div>
+          </div>
+        </div>
+  
+        <!--
+          Mobile menu, show/hide based on mobile menu state.
+      
+          Entering: "duration-200 ease-out"
+            From: "opacity-0 scale-95"
+            To: "opacity-100 scale-100"
+          Leaving: "duration-100 ease-in"
+            From: "opacity-100 scale-100"
+            To: "opacity-0 scale-95"
+        -->
+        <div id="obj2" class="z-10 bg-white rounded-2xl pt-4 absolute inset-x-0 top-0 origin-top-right transform p-2 transition hidden md:hidden">
+          <div class="divide-y-2 divide-gray-50">
+            <div class="px-5 pt-5 pb-6">
+              <div class="flex items-center justify-between">
+                <a href="http://127.0.0.1:8000/" class="flex items-center mb-4 sm:mb-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="stroke-cyan-500 w-6 h-6 sm:hidden">
+                     <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                  </svg>
+                  <span class="text-gray-600 ml-2 font-bold">PowerMarket</span>
+                </a>
+                <div class="-mr-2">
+                  <button type="button" onclick="ocultarMenu()" class="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                    <span class="sr-only">Close menu</span>
+                    <!-- Heroicon name: outline/x-mark -->
+                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div class="mt-6">
+                <nav class="grid gap-y-8">
+                  <span class="text-base font-medium text-gray-600">Categorías</span>
+
+                  <a href="#" class="-m-3 flex items-center rounded-md p-3 hover:bg-gray-50">
+                    <span class="ml-3 text-base font-normal text-gray-600">Notebooks & Computadoras</span>
+                  </a>
+      
+                  <a href="#" class="-m-3 flex items-center rounded-md p-3 hover:bg-gray-50">
+                    <span class="ml-3 text-base font-normal text-gray-600">Almacenamiento</span>
+                  </a>
+      
+                  <a href="#" class="-m-3 flex items-center rounded-md p-3 hover:bg-gray-50">
+                    <span class="ml-3 text-base font-normal text-gray-600">Periféricos</span>
+                  </a>
+      
+                  <a href="#" class="-m-3 flex items-center rounded-md p-3 hover:bg-gray-50">
+                    <span class="ml-3 text-base font-normal text-gray-600">Motherboards</span>
+                  </a>
+      
+                  <a href="#" class="-m-3 flex items-center rounded-md p-3 hover:bg-gray-50">
+                    <span class="ml-3 text-base font-normal text-gray-600">Consolas de Videojuegos</span>
+                  </a>
+                </nav>
+              </div>
+            </div>
+            <div class="space-y-6 py-6 px-5">
+              <div>
+                <a href="#" class="flex items-center justify-center bg-gradient-to-r from-cyan-500 to-blue-500 rounded-md border border-transparent px-4 py-2 text-base font-medium text-white shadow-sm">Regístrate</a>
+                <p class="mt-6 text-center text-base font-medium text-gray-500">
+                  ¿Ya está registrado?
+                  <a href="#" class="text-indigo-600 hover:text-indigo-500">Ingresar</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+</navbar>
+
+<script>
+  function mostrarCategorias(){
+    let objeto = document.getElementById("obj1")
+    objeto.style.display = "inline-flex"
+    objeto.classList.add("transition")  
+    objeto.classList.add("ease-in-out")
+    objeto.classList.add("duration-500")
+  }
+  function ocultarCategorias(){
+    document.getElementById("obj1").style.display = "none"
+  }
+  function ocultarMenu(){
+    document.getElementById("obj2").style.display = "none"
+  }
+  function ocultarMostrarMenu() {
+    var x = document.getElementById("obj2");
+    if (x.style.display === "none") {
+        x.style.display = "inline";
+    } else {
+        x.style.display = "none";
+    }
+  }
+  function ocultarMostrar() {
+    var x = document.getElementById("obj1");
+    if (x.style.display === "none") {
+        x.style.display = "inline-flex";
+    } else {
+        x.style.display = "none";
+    }
+  }
+</script>
+
+
