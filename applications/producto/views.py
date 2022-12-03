@@ -17,4 +17,16 @@ class ProductoListView(ListView):
         context = super().get_context_data(**kwargs)
         context['productos'] = productos
         return context
-    
+
+class buscarProducto(ListView):
+    model = Producto
+    template_name= "producto/buscar_prod.html"
+    context_object_name="productos"
+
+    def get_queryset(self):
+        palabra_clave = self.request.GET.get('kword','')
+        resultado = Producto.objects.filter(
+            nombre_prod__icontains = palabra_clave
+        )
+        return resultado
+

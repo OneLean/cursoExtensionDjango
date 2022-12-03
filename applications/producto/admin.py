@@ -19,6 +19,7 @@ class  ProductoAdmin(admin.ModelAdmin):
 
 class  CategoriaAdmin(admin.ModelAdmin):
     list_display = ('nombre_cat',)
+    prepopulated_fields = {'categoria_slug':('nombre_cat',)}
 
 # Registro los modelos
 admin.site.register(Categoria, CategoriaAdmin)

@@ -4,6 +4,8 @@ from django.db import models
 class Categoria(models.Model):
     nombre_cat = models.CharField(max_length=100)
     descripcion = models.TextField(max_length=500)
+    categoria_slug = models.SlugField(max_length=200,unique=True,blank=True,null=True) # Solo sirve para personalizar la url
+
     def __str__(self):
         return self.nombre_cat
 
