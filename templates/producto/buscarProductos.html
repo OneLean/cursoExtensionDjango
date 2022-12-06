@@ -1,20 +1,12 @@
 {% extends 'home/base.html' %}
 {% load static %}
 
-
 {% block page_content %}
 
-<!-- AQUI INCLUIMOS EL CARROUSEL DE IMAGENES -->
-{% include 'home/carousel.html' %}
-
-<div class="my-6 mt-2 border-gray-200 mx-auto w-11/12 max-w-7xl lg:my-8">
-<hr/>
-<p class="my-4 text-gray-500 text-2xl font-bold dark:text-gray-300">Productos Populares</p>
-</div>
 <section class="mt-2 mx-auto max-w-7xl px-3 sm:px-6 py-2 container grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 ">
-
-    {% for p in productoshome %}
-    <div class="max-w bg-white dark:bg-gray-800 dark:border-gray-600rounded-lg shadow-md col-span-1 hover:shadow-lg hover:shadow-black border-b-4 border-purple-700">
+    
+    {% for p in object_list %}
+    <div class="max-w bg-white dark:bg-gray-800 shadow-md col-span-1 hover:shadow-lg hover:shadow-black border-b-4 border-purple-700">
         <a href="{{ p.get_url }}">
             <img class="rounded-t-lg mx-auto p-2 w-48 h-48" src="{{ p.imagen.url }}" alt=""/>
         </a>
@@ -43,12 +35,14 @@
             </div>
         </div>
     </div>
+
     {% empty %}
         <p class="col-span-full text-white font-bold font-2xl dark:text-gray-300">Lo siento, no hemos encontrado resultados para esta
             búsqueda..
         </p>
         <img src="{% static 'img/notfound.png' %}" class="col-span-full relative mx-auto" alt="">
     {% endfor %}
+
 
 {% block pagination %}
 <nav aria-label="Page navigation example" class="col-span-full mx-auto">
@@ -85,9 +79,7 @@
       {% endif %}
     </ul>
   </nav>
-
-
-</section>
-{% endblock %}
+  {% endblock %}
 
 {% endblock %}
+

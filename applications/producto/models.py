@@ -11,6 +11,9 @@ class Categoria(models.Model):
     descripcion = models.TextField(max_length=500)
     categoria_slug = models.SlugField(max_length=200,unique=True,blank=True,null=True) # Solo sirve para personalizar la url
 
+    def get_url(self):
+        return reverse('categoria', args=[self.categoria_slug])
+
     def __str__(self):
         return self.nombre_cat
 
@@ -25,6 +28,8 @@ class Producto(models.Model):
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
     fecha_creacion = models.DateTimeField(auto_now_add=True)
     fecha_modificacion = models.DateField(auto_now=True)
+    
+    es_popular = models.BooleanField(default=True,null=True)
 
     slug = models.SlugField(max_length=200,unique=True) # Solo sirve para personalizar la url
 

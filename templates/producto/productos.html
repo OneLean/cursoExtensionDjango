@@ -5,8 +5,8 @@
 
 <section class="mt-2 mx-auto max-w-7xl px-3 sm:px-6 py-2 container grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 ">
     
-    {% for p in productos %}
-    <div class="max-w bg-white dark:bg-gray-800 dark:border-gray-600rounded-lg shadow-md col-span-1 hover:shadow-lg hover:shadow-black border-b-4 border-purple-700">
+    {% for p in object_list %}
+    <div class="max-w bg-white dark:bg-gray-800 shadow-md col-span-1 hover:shadow-lg hover:shadow-black border-b-4 border-purple-700">
         <a href="{{ p.get_url }}">
             <img class="rounded-t-lg mx-auto p-2 w-48 h-48" src="{{ p.imagen.url }}" alt=""/>
         </a>
@@ -35,7 +35,6 @@
             </div>
         </div>
     </div>
-
     {% empty %}
         <p class="col-span-full text-white font-bold font-2xl dark:text-gray-300">Lo siento, no hemos encontrado resultados para esta
             búsqueda..
@@ -44,9 +43,7 @@
     {% endfor %}
 
 
-
-   
-    
+{% block pagination %}
 <nav aria-label="Page navigation example" class="col-span-full mx-auto">
     <ul class="inline-flex items-center -space-x-px">
       {% if page_obj.has_previous %}
@@ -62,15 +59,26 @@
       
       {% for pagina in paginator.page_range %}
         
-      
+        {% if pagina == page_obj.number %}        
         <li>
             <a href="?page={{pagina}}" aria-current="page" class="z-10 px-3 py-2 leading-tight text-blue-600 
             border border-blue-300 bg-blue-50 hover:bg-blue-100
-            hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 
-            dark:text-white">{{ pagina }}</a>
+                hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 
+                dark:text-white">{{ pagina }}</a>
         </li>
+        {% else %}
+        <li>
+            <a href="?page={{pagina}}" class="px-3 py-2 leading-tight text-gray-500 
+                                              bg-white border border-gray-300 hover:bg-gray-100 
+                                              hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 
+                                              dark:text-gray-400 dark:hover:bg-gray-700 
+                                              dark:hover:text-white">{{ pagina }}</a>
+          </li>
+
+        {% endif %}
         
-        {% endfor %}
+      {% endfor %}
+
       {% if page_obj.has_next %}
       <li>
         <a href="?page={{ page_obj.next_page_number }}" class="block px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
@@ -81,7 +89,7 @@
       {% endif %}
     </ul>
   </nav>
-  
+  {% endblock %}
 
 {% endblock %}
 

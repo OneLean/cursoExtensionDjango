@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 
 #
 from django.db.models import Q
@@ -10,12 +10,10 @@ from django.views.generic import ListView, DetailView
 from .models import Producto
 
 class ProductoListView(ListView):
-
     model = Producto
-    paginate_by = 2  # if pagination is desired
+    paginate_by = 2 
     template_name = 'producto/productos.html'
     ordering= 'nombre_prod'
-    context_object_name = 'productos'
 
     def get_context_data(self, **kwargs):
         productos = Producto.objects.all()
@@ -23,10 +21,20 @@ class ProductoListView(ListView):
         context['productos'] = productos
         return context
 
+class productoPorCategoria(ListView):
+    template_name= "producto/productos.html"
+    paginate_by: 2
+
+    def get_queryset(self):
+        slugRecuperado = self.kwargs['categoria_slug']
+        listaFiltrada = Producto.objects.filter(
+            categoria__categoria_slug=slugRecuperado
+        )
+        return listaFiltrada
+
 class buscarProducto(ListView):
     model = Producto
     template_name= "producto/productos.html"
-    context_object_name="productos"
     paginate_by: 2
     ordering= 'nombre_prod'
 
@@ -45,15 +53,3 @@ class detalleProducto(DetailView):
         context['detalle'] = self.get_object()
         return context
 
-
-class ProductoListViewHOME(ListView):
-    model = Producto
-    template_name = 'home/home.html'
-    ordering= 'nombre_prod'
-    context_object_name = 'productosh'
-
-    def get_context_data(self, **kwargs):
-        productos = Producto.objects.all()
-        context = super(ProductoListView,self).get_context_data(**kwargs)
-        context['productos'] = productos
-        return context

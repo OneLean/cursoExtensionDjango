@@ -26,8 +26,6 @@ urlpatterns = [
     # Incluimos las urls de las aplicaciones
     #URLs de carrito
     path('', include('applications.carrito.urls')),
-    #URLs de categoria
-    path('', include('applications.categoria.urls')),
     #URLs de home
     path('', include('applications.home.urls')),
     #URLs de producto

@@ -1,8 +1,11 @@
 from django.shortcuts import render
 
 # AQUI IMPORTAMOS LAS VISTAS GENERICAS
-from django.views.generic import TemplateView
+from django.views.generic import ListView
 
+# DE AQUI IMPORTAMOS LOS MODELOS DE LA
+# OTRA APLICACION
+from applications.producto.models import Producto
 
 # AQUI VAN LAS VISTAS DE HOME
 
@@ -12,5 +15,13 @@ from django.views.generic import TemplateView
 
 # VISTA BASADA EN CLASES
 
-class inicio(TemplateView):
+class inicio(ListView):
+    model: Producto
     template_name = "home/home.html"
+    paginate_by: 2
+    context_object_name = 'productoshome'
+
+    def get_queryset(self):
+        resultado = Producto.objects.filter(
+            es_popular = True)
+        return resultado
