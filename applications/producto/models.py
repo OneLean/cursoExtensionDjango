@@ -1,5 +1,10 @@
 from django.db import models
 
+# AQUI IMPORTAMOS EL REVERSE PARA OBTENER LA URL
+# ASOCIADA AL PRODUCTO
+from django.urls import reverse
+
+
 # Create your models here.
 class Categoria(models.Model):
     nombre_cat = models.CharField(max_length=100)
@@ -22,6 +27,9 @@ class Producto(models.Model):
     fecha_modificacion = models.DateField(auto_now=True)
 
     slug = models.SlugField(max_length=200,unique=True) # Solo sirve para personalizar la url
+
+    def get_url(self):
+        return reverse('detalle', args=[self.categoria.categoria_slug,self.slug])
 
     def __str__(self):
         return self.nombre_prod

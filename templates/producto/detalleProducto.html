@@ -1,0 +1,12 @@
+{% extends 'home/base.html' %}
+
+
+{% block page_content %}
+    <div class="text-gray-300">
+    <h1>Nombre:{{ object.nombre_prod }}</h1>
+    <p>Descripcion{{ object.descripcion }}</p>
+    <img src="{{ object.imagen.url}}" alt="">
+    <p>Precio: {{ object.precio }}</p>
+    </div>
+{% endblock %}
+    
