@@ -14,7 +14,7 @@
 <section class="mt-2 mx-auto max-w-7xl px-3 sm:px-6 py-2 container grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 ">
 
     {% for p in productoshome %}
-    <div class="max-w bg-white dark:bg-gray-800 dark:border-gray-600rounded-lg shadow-md col-span-1 hover:shadow-lg hover:shadow-black border-b-4 border-purple-700">
+    <div class="max-w bg-white dark:bg-gray-800 shadow-md col-span-1 hover:shadow-lg hover:shadow-black rounded-lg border-b-4 border-blue-700">
         <a href="{{ p.get_url }}">
             <img class="rounded-t-lg mx-auto p-2 w-48 h-48" src="{{ p.imagen.url }}" alt=""/>
         </a>
@@ -35,10 +35,11 @@
                     </button></a>
                 </div>
                 <div class="col-span-4 border-none hover:border-blue-700 text-gray-500  dark:text-gray-300  hover:text-white rounded-full">
-                    <button type="button" class="h-10 font-medium rounded-full text-sm pl-2 text-center inline-flex items-center">
+                    <a href="{% url 'add_cart' p.id %}"><button type="button" class="h-10 font-medium rounded-full text-sm pl-2 text-center inline-flex items-center">
                         <svg aria-hidden="true" class="mr-1 ml-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path></svg>
                         <span class="p-1">Comprar</span>
                     </button>
+                    </a>
                 </div>
             </div>
         </div>

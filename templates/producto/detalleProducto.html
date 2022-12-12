@@ -2,11 +2,60 @@
 
 
 {% block page_content %}
-    <div class="text-gray-300">
-    <h1>Nombre:{{ object.nombre_prod }}</h1>
-    <p>Descripcion{{ object.descripcion }}</p>
-    <img src="{{ object.imagen.url}}" alt="">
-    <p>Precio: {{ object.precio }}</p>
-    </div>
+    <!-- component -->
+    <section class="mx-auto max-w-7xl container text-gray-700 body-font overflow-hidden mt-4 bg-white dark:text-gray-300 dark:bg-gray-800 rounded-2xl shadow-2xl">
+        <div class="container px-5 py-5 mx-auto">
+        <div class="lg:w-4/5 mx-auto flex flex-wrap">
+            <img alt="ecommerce" class="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200" src="{{object.imagen.url}}">
+            <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+            <h2 class="text-sm title-font text-gray-500 tracking-widest">{{ object.categoria.nombre_cat }}</h2>
+            <h1 class="text-gray-900 dark:text-gray-300 text-3xl title-font font-medium mb-1">{{ object.nombre_prod }}</h1>
+            <div class="flex mb-4">
+                <span class="flex items-center">
+                <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-blue-500" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                </svg>
+                <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-blue-500" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                </svg>
+                <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-blue-500" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                </svg>
+                <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-blue-500" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                </svg>
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-blue-500" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                </svg>
+                <span class="text-gray-600 dark:text-gray-300 ml-3">4 Reviews</span>
+                </span>
+                <span class="flex ml-3 pl-3 py-2 border-l-2 border-gray-200">
+                    {% if object.es_popular %}
+                        <p class="text-blue-700 font-medium">Producto Popular</p>
+                    {%endif%}
+                </span>
+            </div>
+            <p class="leading-relaxed">{{ object.descripcion }}</p>
+                <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">
+                    <div class="flex">
+                        <div class="relative">
+                            <span class="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex">
+                    <span class="title-font font-medium text-2xl text-gray-900 dark:text-gray-300">$ {{ object.precio }}</span>
+                    <a href="{% url 'add_cart' object.id %}" class="ml-auto">
+                    <button class="flex my-auto text-white bg-blue-700 border-0 py-2 px-6 focus:outline-none rounded-lg">
+                        <svg aria-hidden="true" class="mr-4 mt-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path></svg>
+                        Agregar al carrito
+                    </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
 {% endblock %}
     

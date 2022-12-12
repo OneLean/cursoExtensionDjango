@@ -11,7 +11,7 @@ from .models import Producto
 
 class ProductoListView(ListView):
     model = Producto
-    paginate_by = 1 
+    paginate_by = 3
     template_name = 'producto/productos.html'
     ordering= 'nombre_prod'
 
@@ -23,7 +23,7 @@ class ProductoListView(ListView):
 
 class productoPorCategoria(ListView):
     template_name= "producto/productos.html"
-    paginate_by = 1
+    paginate_by = 3
 
     def get_queryset(self):
         slugRecuperado = self.kwargs['categoria_slug']
@@ -35,7 +35,7 @@ class productoPorCategoria(ListView):
 class buscarProducto(ListView):
     model = Producto
     template_name= "producto/productos.html"
-    paginate_by = 1
+    paginate_by = 3
     ordering= 'nombre_prod'
 
     def get_queryset(self):

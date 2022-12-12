@@ -49,6 +49,9 @@ INSTALLED_APPS = [
 
     #Django-Reload-Browser
     "django_browser_reload",
+
+    # Django-widget-tweaks
+    'widget_tweaks',
 ]
 
 # CONFIGURACIONES DE JAZZMIN
@@ -63,19 +66,19 @@ JAZZMIN_SETTINGS = {
     "site_brand": "PowerMarket",
 
     # Logo to use for your site, must be present in static files, used for brand on top left
-    "site_logo": "/img/favicon (2).ico",
+    "site_logo": "/img/iconoPagina.png",
 
     # Logo to use for your site, must be present in static files, used for login form logo (defaults to site_logo)
-    "login_logo": "/img/favicon (2).ico",
+    "login_logo": "/img/icono2.png",
 
     # Logo to use for login form in dark themes (defaults to login_logo)
-    "login_logo_dark": "/img/favicon (2).ico",
+    "login_logo_dark": "/img/icono2.png",
 
     # CSS classes that are applied to the logo above
     "site_logo_classes": "img-circle",
 
     # Relative path to a favicon for your site, will default to site_logo if absent (ideally 32x32 px)
-    "site_icon": "/img/favicon (2).ico",
+    "site_icon": "/img/iconoPagina.png",
 
     # Welcome text on the login screen
     "welcome_sign": "Bienvenido a la administracion de PowerMarket",
@@ -159,6 +162,11 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+
+# INDICAMOS QUE AHORA QUREMOS QUE TRABAJE CON
+# OTRO MODELO DE USUARIO
+AUTH_USER_MODEL = 'usuario.User'
 
 
 # Internationalization
