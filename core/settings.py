@@ -48,11 +48,26 @@ INSTALLED_APPS = [
     'applications.usuario',
 
     #Django-Reload-Browser
-    "django_browser_reload",
+    #"django_browser_reload",
 
     # Django-widget-tweaks
     'widget_tweaks',
+    
+
+    # Django Tailwind CSS
+    'tailwind',
+    'theme',
+    'django_browser_reload'
 ]
+
+TAILWIND_APP_NAME = 'theme'
+
+NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+
 
 # CONFIGURACIONES DE JAZZMIN
 JAZZMIN_SETTINGS = {
@@ -108,7 +123,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     
     #Django-Reload-Browser
+    #"django_browser_reload.middleware.BrowserReloadMiddleware",
+
+    # Tailwind
     "django_browser_reload.middleware.BrowserReloadMiddleware",
+    # ...
+
 ]
 
 ROOT_URLCONF = 'core.urls'
