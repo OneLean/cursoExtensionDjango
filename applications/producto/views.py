@@ -5,11 +5,15 @@ from django.db.models import Q
 
 # Create your views here.
 
+from django.urls import reverse_lazy
+
 from django.views.generic import ListView, DetailView
+
+from django.views.generic.edit import CreateView,UpdateView,DeleteView
 
 from .models import Producto
 
-class ProductoListView(ListView):
+class ProductoListView(ListView): 
     model = Producto
     paginate_by = 3
     template_name = 'producto/productos.html'
@@ -53,3 +57,30 @@ class detalleProducto(DetailView):
         context['detalle'] = self.get_object()
         return context
 
+class productosModa(ListView):
+    model = Producto
+    template_name= "producto/productos.html"
+    paginate_by = 3
+
+    def get_queryset(self):
+        listaFiltrada = Producto.objects.filter(
+            Q(categoria__categoria_slug = 'ropa-y-accesorios')|Q(categoria__categoria_slug = 'belleza-e-higiene-personal')
+        )
+        return listaFiltrada
+
+class crearProducto(CreateView):
+    template_name = "producto/crear.html"
+    model = Producto
+    fields = ('__all__')
+    success_url = '.'
+
+class modificarProducto(UpdateView):
+    model = Producto
+    fields = ('__all__')
+    template_name = 'producto/crear.html'
+    success_url = '.'
+
+class eliminarProducto(DeleteView):
+    model = Producto
+    template_name = 'producto/borrar.html'
+    success_url = reverse_lazy('home')

@@ -126,6 +126,8 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 # PARA ACCEDER A LAS CATEGORIAS
                 'applications.producto.context_processors.menu_links',
+                # PARA ACCEDER AL CARRITO
+                'applications.carrito.context_processors.menu_carrito',
             ],
         },
     },

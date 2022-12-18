@@ -32,15 +32,56 @@ def agregar_carrito(request, producto_id):
         carrito_item.save()
     return redirect('cart')
 
-from django.views.generic import ListView
+from django.shortcuts import get_object_or_404
 
-class CarritoListView(ListView):
-    model = CarritoItem
-    template_name = 'carrito/carrito.html'
-    ordering= 'producto'
 
-    def get_context_data(self, **kwargs):
-        productos = CarritoItem.objects.all()
-        context = super(CarritoListView,self).get_context_data(**kwargs)
-        context['itemsCarrito'] = productos
-        return context
+def quitar_carrito(request, producto_id):
+    carrito = Carrito.objects.get(carrito_id=_carrito_id(request))
+    producto = get_object_or_404(Producto, id=producto_id)
+    carrito_item = CarritoItem.objects.get(producto=producto,carrito=carrito)
+
+    if carrito_item.quantity > 1:
+        carrito_item.quantity -= 1
+        carrito_item.save()
+    else:
+        carrito_item.delete()
+    
+    return redirect('cart')
+
+def quitar_item_carrito(request, producto_id):
+    carrito = Carrito.objects.get(carrito_id=_carrito_id(request))
+    producto = get_object_or_404(Producto, id=producto_id)
+    carrito_item = CarritoItem.objects.get(producto=producto,carrito=carrito)
+
+    carrito_item.delete()
+    
+    return redirect('cart')
+
+
+
+from django.core.exceptions import ObjectDoesNotExist
+
+def cart(request, total=0, quantity=0, carrito_items=None):
+    try:
+        carrito = Carrito.objects.get(carrito_id=_carrito_id(request))
+        carrito_items = CarritoItem.objects.filter(carrito=carrito,is_active=True)
+        for carrito_item in carrito_items:
+            total += (carrito_item.producto.precio*carrito_item.quantity)
+            quantity += carrito_item.quantity
+        impuesto=0.02*total
+        totalPagar=total+impuesto
+
+    except ObjectDoesNotExist:
+        impuesto=0
+        totalPagar=0
+        pass # Lo que ignora la excepcion
+
+    context = {
+        'total': total,
+        'quantity': quantity,
+        'carrito_items': carrito_items,
+        'impuesto':impuesto,
+        'totalPagar':totalPagar,
+    }
+
+    return render(request, 'carrito/carrito.html', context)

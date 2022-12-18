@@ -18,8 +18,7 @@
               </div>
             </a>
           <div class="col-start-1 col-span-3 sm:col-start-2 sm:col-span-2 ">
-            
-            {% comment %} ESTE ES EL BUSCADORRRRR {% endcomment %}
+            <!-- ESTE ES EL BUSCADOR DE PRODUCTOS -->
             <form action="{% url 'search' %}" method="GET">
               <div class="flex">
                   <div class="relative w-full">
@@ -43,9 +42,6 @@
                   </div>
               </div>
             </form>
-
-
-
           </div>
         </div>
     </div>
@@ -94,7 +90,7 @@
                 </div>
               </div>
               <a href="#" class="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-300 mt-1">Ofertas</a>
-              <a href="#" class="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-300 mt-1">Moda</a>
+              <a href="{% url 'listaproducto' %}/ropa-y-accesorios" class="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-300 mt-1">Moda</a>
               <a href="#" class="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-300 mt-1">Ayuda</a>
               
 
@@ -111,13 +107,14 @@
                 <a href="{% url 'loginUser' %}" class="mr-3 whitespace-nowrap text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-200">Ingresar</a>
                 <a href="{% url 'registerUser' %}" class="transition-all ease-in duration-150
                 inline-flex items-center justify-center
-                whitespace-nowrap rounded-lg
-                px-3 py-2 text-sm font-medium text-gray-600
-                hover:text-white shadow-sm
-                dark:text-gray-300 dark:hover:text-gray-200">Regístrate</a>
+                whitespace-nowrap rounded-sm
+                px-3 py-2 mr-3 text-sm font-medium text-gray-600
+                hover:text-white hover:bg-blue-700 shadow-sm
+                dark:text-gray-300 dark:hover:text-gray-200 transition ease-in duration-500">Regístrate</a>
               {% endif %}
-              <a href="{% url 'cart' %}">
-                        <button type="button" class="inline-flex items-center 
+              
+                        <button data-popover-target="popover-bottom2" data-popover-placement="bottom" type="button"  
+                            class="inline-flex items-center 
                                        justify-center
                                        bg-white p-3 text-gray-400
                                        border-gray-500  
@@ -126,10 +123,57 @@
                                        dark:rounded-full dark:border dark:border-gray-500"
                                        aria-expanded="false">
                           <span class="sr-only">Open menu</span>
+                          
                           <!-- Heroicon name: CARRITO -->
-                          <svg aria-hidden="true" class="mr-1 ml-1 w-5 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path></svg>
+                          
+                          <a href="{% url 'cart' %}" >
+                            <svg aria-hidden="true" class="mr-1 ml-1 w-5 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path></svg>
+                          </a>
+
+                          <div data-popover id="popover-bottom2" role="tooltip" class="absolute z-10 invisible inline-block w-64 text-sm font-light text-gray-500 transition-ease-in duration-300 bg-white border border-gray-200 rounded-lg shadow-2xl opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+                            <div class="px-3 py-2 bg-gray-100 border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
+                                <h3 class="font-semibold text-gray-900 dark:text-white">Tu Carrito de Compras</h3>
+                            </div>
+                            <!-- Aquí van los links a los items del CARRITO -->
+                            <div class="py-2">
+                              {% for item in carrito_items %}
+                              <a href="{{ item.producto.get_url }}">
+                                <div class="w-full inline-flex gap-3 p-2 text-gray-700 hover:bg-gray-100 hover:border-blue-700 hover:text-gray-500 dark:hover:text-white dark:hover:border-blue-700 dark:hover:bg-gray-700 dark:text-white transition-ease-in duration-300">
+                                  <div class="bg-white">
+                                    <img src="{{item.producto.imagen.url}}" style="height:30px;width:30px;object-fit:contain;" alt="">
+                                  </div>
+                                  <div class="m-auto">
+                                    {{item.producto.nombre_prod}}
+                                  </div>
+                                  <div class="m-auto">
+                                    ${{item.producto.precio}}
+                                  </div>
+                                </div>
+                              </a>
+                              {% empty %}
+                                <p>No has seleccionado productos aún.</p>
+                              {% endfor %}
+                              <div class="grid grid-cols-2 text-sm">
+                                <div class="col-span-1 ml-3 text-left">
+                                  Total
+                                </div>
+                                <div class="col-span-1 mr-3 text-right">
+                                  ${{total}}
+                                </div>
+                              </div>
+                              <a href="{% url 'cart' %}">
+                                <div class="mx-3 mt-2 px-1 py-2 bg-blue-700 shadow-lg hover:bg-blue-800 transition ease-in duration-300 text-white rounded">
+                                  <div class="my-auto">
+                                    Ver detalle
+                                  </div>
+                                </div>
+                              </a>
+                              <hr class="my-1 bg-gray-200 border-0 dark:bg-gray-700">
+                            </div>
+                            <div data-popper-arrow></div>
+                          </div>
+                        
                         </button>
-               </a>
             </div>
           </div>
         </div>
