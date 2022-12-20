@@ -68,19 +68,27 @@ class productosModa(ListView):
         )
         return listaFiltrada
 
-class crearProducto(CreateView):
+from django.contrib.auth.mixins import PermissionRequiredMixin
+
+class crearProducto(PermissionRequiredMixin, CreateView):
     template_name = "producto/crear.html"
     model = Producto
     fields = ('__all__')
-    success_url = '.'
+    success_url = reverse_lazy('listaproducto')
+    permission_required = 'producto.change_producto'
+    permission_denied_message = 'No estas autorizado para acceder'
 
-class modificarProducto(UpdateView):
+class modificarProducto(PermissionRequiredMixin, UpdateView):
     model = Producto
     fields = ('__all__')
     template_name = 'producto/crear.html'
-    success_url = '.'
+    success_url = reverse_lazy('listaproducto')
+    permission_required = 'producto.change_producto'
+    permission_denied_message = 'No estas autorizado para acceder'
 
-class eliminarProducto(DeleteView):
+class eliminarProducto(PermissionRequiredMixin, DeleteView):
     model = Producto
     template_name = 'producto/borrar.html'
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('listaproducto')
+    permission_required = 'producto.change_producto'
+    permission_denied_message = 'No estas autorizado para acceder'

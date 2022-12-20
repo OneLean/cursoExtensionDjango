@@ -1,9 +1,14 @@
 from django.urls import path
 
 # Importamos las vistas
+from .views import *
 
-from . import views
+# Importamos el manejador de errores 400,500
+from django.conf.urls import handler404
 
 urlpatterns = [
-    path('', views.inicio.as_view(), name="home"),
+    path('', inicio.as_view(), name="home"),
 ]
+
+
+

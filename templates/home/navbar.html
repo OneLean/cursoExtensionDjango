@@ -98,8 +98,11 @@
             <div class="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
               {% if user.is_authenticated %}
                 <p class="mr-3 whitespace-nowrap text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-200">
-                  Bienvenido {{user}}
+                  Bienvenido {% if user.is_superuser %}administrador{% endif %} {{user}}
                 </p>
+                <a href="#" class="mr-3 whitespace-nowrap text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-200">
+                  Ver pedidos
+                </a>
                 <a href="{% url 'logoutUser' %}" class="mr-3 whitespace-nowrap text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-200">
                   Cerrar Sesión
                 </a>
@@ -137,27 +140,22 @@
                             <!-- Aquí van los links a los items del CARRITO -->
                             <div class="py-2">
                               {% for item in carrito_items %}
-                              <a href="{{ item.producto.get_url }}">
-                                <div class="w-full inline-flex gap-3 p-2 text-gray-700 hover:bg-gray-100 hover:border-blue-700 hover:text-gray-500 dark:hover:text-white dark:hover:border-blue-700 dark:hover:bg-gray-700 dark:text-white transition-ease-in duration-300">
-                                  <div class="bg-white">
-                                    <img src="{{item.producto.imagen.url}}" style="height:30px;width:30px;object-fit:contain;" alt="">
+                                <a href="{{ item.producto.get_url }}">
+                                  <div class="w-full inline-flex p-2 text-gray-700 hover:bg-gray-100 hover:border-blue-700 hover:text-gray-500 dark:hover:text-white dark:hover:border-blue-700 dark:hover:bg-gray-700 dark:text-white transition-ease-in duration-300">
+                                    <div class="bg-white mr-3">
+                                      <img src="{{item.producto.imagen.url}}" style="height:30px;width:30px;object-fit:contain;" alt="">
+                                    </div>
+                                    <div class="flex space-x-96">
+                                      {{item.producto.nombre_prod}} <div class="w-28"></div> ${{item.producto.precio}}
+                                    </div>
                                   </div>
-                                  <div class="m-auto">
-                                    {{item.producto.nombre_prod}}
-                                  </div>
-                                  <div class="m-auto">
-                                    ${{item.producto.precio}}
-                                  </div>
-                                </div>
-                              </a>
+                                </a>
                               {% empty %}
-                                <p>No has seleccionado productos aún.</p>
+                                <p>No has selec cionado productos aún.</p>
                               {% endfor %}
                               <div class="grid grid-cols-2 text-sm">
-                                <div class="col-span-1 ml-3 text-left">
+                                <div class="col-span-1 ml-3 text-left space-between">
                                   Total
-                                </div>
-                                <div class="col-span-1 mr-3 text-right">
                                   ${{total}}
                                 </div>
                               </div>

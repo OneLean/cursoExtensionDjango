@@ -21,6 +21,8 @@ from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
 
+from applications.home.views import Error404View, Error403View
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     # Incluimos las urls de las aplicaciones
@@ -36,3 +38,6 @@ urlpatterns = [
     path("__reload__/", include("django_browser_reload.urls")),
 ] + static(settings.MEDIA_URL,
                           document_root=settings.MEDIA_ROOT)
+
+handler404 = Error404View.as_view()
+handler403 = Error403View.as_view()

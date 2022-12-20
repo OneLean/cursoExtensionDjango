@@ -21,3 +21,20 @@ class CarritoItem(models.Model):
     def __unicode__(self):
         return self.producto
 
+class Pedido(models.Model):
+    estado_choices = (
+        ('P','Pendiente'),
+        ('E','Entregado'),
+        ('A','Anulado'),
+    )
+    pago_choices = (
+        ('P','Pendiente'),
+       ('C','Cancelado'),
+    )
+
+    items = models.ForeignKey(CarritoItem, on_delete=models.CASCADE)
+    estado = models.CharField(max_length=1, choices=estado_choices, blank=True)
+    pago = models.CharField(max_length=1, choices=pago_choices, blank=True)
+
+    def __str__(self):
+        return self.id
