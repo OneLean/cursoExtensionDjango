@@ -20,7 +20,7 @@ class CarritoItem(models.Model):
 
     def __unicode__(self):
         return self.producto
-
+"""
 class Pedido(models.Model):
     estado_choices = (
         ('P','Pendiente'),
@@ -38,3 +38,4 @@ class Pedido(models.Model):
 
     def __str__(self):
         return self.id
+"""

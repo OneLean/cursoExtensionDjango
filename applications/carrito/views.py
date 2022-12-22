@@ -85,27 +85,3 @@ def cart(request, total=0, quantity=0, carrito_items=None):
     }
 
     return render(request, 'carrito/carrito.html', context)
-
-
-def crear_pedido(request, pedido_id):
-    producto = Producto.objects.get(id=producto_id)
-    try:
-        carrito = Carrito.objects.get(carrito_id=_carrito_id(request))
-    except Carrito.DoesNotExist:
-        carrito = Carrito.objects.create(
-            carrito_id=_carrito_id(request)
-        )
-    carrito.save()
-
-    try:
-        carrito_item = CarritoItem.objects.get(producto=producto,carrito=carrito)
-        carrito_item.quantity += 1
-        carrito_item.save()
-    except CarritoItem.DoesNotExist:
-        carrito_item = CarritoItem.objects.create(
-            producto=producto,
-            quantity = 1,
-            carrito = carrito
-        )
-        carrito_item.save()
-    return redirect('cart')

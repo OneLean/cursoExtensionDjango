@@ -84,7 +84,7 @@ JAZZMIN_SETTINGS = {
     "welcome_sign": "Bienvenido a la administracion de PowerMarket",
 
     # Copyright on the footer
-    "copyright": "Doofenshmirtz Malvados y Asociados",
+    "copyright": "PowerMarket S.A.",
 
     # List of model admins to search from the search bar, search bar omitted if excluded
     # If you want to use a single search field you dont need to use a list, you can use a simple string 
@@ -93,9 +93,54 @@ JAZZMIN_SETTINGS = {
     # Field name on user model that contains avatar ImageField/URLField/Charfield or a callable that receives the user
     "user_avatar": None,
 
-    "related_modal_active": False,
+    "changeform_format": "horizontal_tabs",
+
+    "topmenu_links": [
+        # Url that gets reversed (Permissions can be added)
+        {"name": "Inicio",  "url": "admin:index", "permissions": ["auth.view_user"]},
+
+        # external url that opens in a new window (Permissions can be added)
+        {"name": "Ver sitio", "url": "home"},
+
+        # model admin to link to (Permissions checked against model)
+        {"model": "auth.User"},
+    ],
+
+    "show_ui_builder" : True
+    
+}
 
 
+JAZZMIN_UI_TWEAKS = {
+    "navbar_small_text": False,
+    "footer_small_text": False,
+    "body_small_text": False,
+    "brand_small_text": False,
+    "brand_colour": False,
+    "accent": "accent-primary",
+    "navbar": "navbar-white navbar-light",
+    "no_navbar_border": False,
+    "navbar_fixed": False,
+    "layout_boxed": False,
+    "footer_fixed": False,
+    "sidebar_fixed": True,
+    "sidebar": "sidebar-dark-primary",
+    "sidebar_nav_small_text": True,
+    "sidebar_disable_expand": False,
+    "sidebar_nav_child_indent": False,
+    "sidebar_nav_compact_style": False,
+    "sidebar_nav_legacy_style": False,
+    "sidebar_nav_flat_style": False,
+    "theme": "journal",
+    "dark_mode_theme": None,
+    "button_classes": {
+        "primary": "btn-outline-primary",
+        "secondary": "btn-outline-secondary",
+        "info": "btn-info",
+        "warning": "btn-warning",
+        "danger": "btn-danger",
+        "success": "btn-success"
+    }
 }
 
 MIDDLEWARE = [
