@@ -36,7 +36,7 @@ def agregar_carrito(request, producto_id):
         return redirect('cart')
     else:
         # no está logueado asi que no se puede agregar ningun carrito
-        return redirect('listaproducto')
+        return redirect('loginUser')
 
 from django.shortcuts import get_object_or_404
 
