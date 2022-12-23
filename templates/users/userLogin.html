@@ -5,7 +5,7 @@
 {% block page_content %}
 
 <div class="max-w-7xl px-3 sm:px-6 py-2 grid grid-cols-12">
-    <div class="my-auto col-start-5 col-span-4 bg-white dark:bg-gray-800 p-4 rounded-lg border-t-4 border-blue-700 shadow-2xl">
+    <div class="my-auto col-span-12 sm:col-span-8 sm:col-start-3 md:col-span-6 md:col-start-4 lg:col-span-4 lg:col-start-5 bg-white dark:bg-gray-800 p-4 rounded-lg border-t-4 border-blue-700 shadow-2xl">
         <form method="post"> {% csrf_token %}
             <img class="mx-auto rounded-full h-20 w-20" src="{% static 'img/iconoLogin.png' %}" alt="">
             <p class="text-xl text-center text-gray-500 font-light my-4 dark:text-white mb-4">
