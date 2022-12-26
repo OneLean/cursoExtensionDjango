@@ -8,10 +8,10 @@
     <div class="my-auto col-span-12 sm:col-span-8 sm:col-start-3 md:col-span-6 md:col-start-4 lg:col-span-4 lg:col-start-5 bg-white dark:bg-gray-800 p-4 rounded-lg border-t-4 border-blue-700 shadow-2xl">
         <form method="post"> {% csrf_token %}
             <img class="mx-auto rounded-full h-20 w-20" src="{% static 'img/iconoLogin.png' %}" alt="">
-            <p class="text-xl text-center text-gray-500 font-light my-4 dark:text-white mb-4">
+            <p class="text-xl text-center text-gray-500 font-sm my-4 dark:text-white mb-4">
                 Bienvenido a PowerMarket!
             </p>
-            <p class="text-lg text-gray-500 font-light mb-4 dark:text-white mb-4">Inicio de sesión</p>
+            <p class="text-lg text-gray-500 font-sm mb-4 dark:text-white mb-4">Inicio de sesión</p>
             <div class="relative z-0 mb-6 w-full group">
                 {% render_field form.username placeholder=" " autocomplete="off" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" %}
                 <label for="floating_email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Usuario</label>
@@ -21,7 +21,7 @@
                 <label for="floating_email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Contraseña</label>
             </div>
             <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Ingresar</button>
-            <a href="{% url 'registerUser' %}"><p class="my-4 hover:underline text-sm text-center text-gray-400">¿Aún no estás registrado? Registrate aquí!</p> </a>
+            <a href="{% url 'registerUser' %}"><p class="my-4 hover:underline text-sm text-center text-gray-500">¿Aún no estás registrado? Registrate aquí!</p> </a>
         </form>
     </div>
 </div>

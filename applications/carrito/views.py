@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from applications.producto.models import Producto
 from applications.usuario.models import User
-from .models import Carrito,CarritoItem
+from .models import Carrito,CarritoItem #Pedido
 
 # Create your views here.
 def _carrito_id(request):
@@ -31,6 +31,7 @@ def agregar_carrito(request, producto_id):
                 producto=producto,
                 quantity = 1,
                 carrito = carrito,
+                usuario=request.user
             )
             carrito_item.save()
         return redirect('cart')
@@ -89,3 +90,28 @@ def cart(request, total=0, quantity=0, carrito_items=None):
     }
 
     return render(request, 'carrito/carrito.html', context)
+
+# Bueno acá la idea es crear una función que cree un pedido del usuario
+# pero que además se cree otro carrito para ese usuario, de modo que
+# pueda disponer de el alguna otra vez que quiera comprar de nuevo
+# Planteandolo de esta forma, es como que el carrito que queda guardado
+# representa el pedido que hizo el usuario.
+
+
+# def crear_pedido(request, carrito_id):
+#     if request.user.is_authenticated:        
+#         try:
+#             orden = Carrito.objects.get(id=request.Carrito.id)
+#         except Carrito.DoesNotExist:
+#             # Si no existe redirijo al carrito, donde se va a crear uno
+#             return redirect('cart')
+        
+#         pedido = Pedido.objects.create(
+#             # Acá tengo que poner un formulario para crear el pedido
+#             orden=form.cleaned_data['orden'],
+#         )
+#         pedido.save()
+#         return redirect('cart')
+#     else:
+#         # no está logueado asi que no puede hacer pedidos
+#         return redirect('loginUser')

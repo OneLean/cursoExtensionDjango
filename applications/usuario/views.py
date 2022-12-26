@@ -54,7 +54,6 @@ class UserLogout(View):
             reverse('loginUser')
         )
 
-
 class UserDashboard(LoginRequiredMixin,TemplateView):
     model = User
     template_name= "users/userDashboard.html"
