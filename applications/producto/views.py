@@ -13,7 +13,7 @@ from django.views.generic.edit import CreateView,UpdateView,DeleteView
 
 from .models import Producto
 
-class ProductoListView(ListView): 
+class ProductoListView(ListView):
     model = Producto
     paginate_by = 3
     template_name = 'producto/productos.html'

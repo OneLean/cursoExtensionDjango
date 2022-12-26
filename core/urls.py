@@ -34,6 +34,8 @@ urlpatterns = [
     path('', include('applications.producto.urls')),
     #URLs de usuario
     path('', include('applications.usuario.urls')),
+    #URLs de orden
+    path('', include('applications.orden.urls')),
     #Django-Reload-Browser
     path("__reload__/", include("django_browser_reload.urls")),
 ] + static(settings.MEDIA_URL,
