@@ -9,6 +9,26 @@
             <p class="text-xl text-center text-gray-500 font-light my-4 dark:text-white mb-4">
                 Bienvenido a PowerMarket!
             </p>
+            {% if form.errors %}
+            {% for field in form %}
+                {% for error in field.errors %} 
+                    <strong>{{ error }}</strong>
+                        
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
+
+        {% if form.non_field_errors %}
+            {{ form.non_field_errors }}
+        {% endif %}    
+
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}><strong>{{ message }}</strong></li>
+                {% endfor %}
+            </ul>
+        {% endif %}
         <p class="text-lg text-gray-500 font-light mb-4 dark:text-white mb-4">Registro de usuario</p>
         <div class="relative z-0 mb-6 w-full group">
             {% render_field form.email placeholder=" " autocomplete="off" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" %}

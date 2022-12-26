@@ -17,6 +17,9 @@ from .models import User
 # IMPORTAMOS EL FORMULARIO
 from .forms import UserRegisterForm,LoginForm
 
+# IMPORTAMOS PARA LOS MENSAJES
+from django.contrib import messages
+
 # Create your views here.
 class UserRegisterView(FormView):
     template_name = 'users/userRegister.html'
@@ -32,6 +35,8 @@ class UserRegisterView(FormView):
             last_name=form.cleaned_data['last_name'],
             genero=form.cleaned_data['genero']
         )
+        messages.add_message(request=self.request, level=messages.SUCCESS, message="Registro exitoso")
+
         return super(UserRegisterView, self).form_valid(form)
 
 class UserLogin(FormView):
@@ -46,6 +51,7 @@ class UserLogin(FormView):
         )
         login(self.request, user)
         return super(UserLogin,self).form_valid(form)
+
 
 class UserLogout(View):
     def get(self, request, *args, **kwargs):
