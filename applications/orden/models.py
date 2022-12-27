@@ -7,13 +7,13 @@ from applications.carrito.models import Carrito
 # Create your models here.
 class Pedido(models.Model):
     estado_choices = (
-        ('P','Pendiente'),
-        ('E','Entregado'),
-        ('A','Anulado'),
+        ('Pendiente','Pendiente'),
+        ('Entregado','Entregado'),
+        ('Anulado','Anulado'),
     )
     pago_choices = (
-        ('P','Pendiente'),
-        ('C','Cancelado'),
+        ('Pendiente','Pendiente'),
+        ('Cancelado','Cancelado'),
     )
     # Datos del usuario que compra:
     usuario = models.ForeignKey(User,on_delete=models.SET_NULL,null=True,blank=True)
@@ -30,11 +30,11 @@ class Pedido(models.Model):
     impuesto = models.IntegerField()
 
     orden = models.ForeignKey(Carrito, on_delete=models.CASCADE, null=True)
-    estado = models.CharField(max_length=1, choices=estado_choices,default='P', blank=True)
-    pago = models.CharField(max_length=1, choices=pago_choices,default='P', blank=True)
+    estado = models.CharField(max_length=100, choices=estado_choices,default='Pendiente', blank=True)
+    pago = models.CharField(max_length=100, choices=pago_choices,default='Pendiente', blank=True)
 
     def __str__(self):
-        return 'Pedido Nº '+str(self.id)
+        return 'Pedido Nº '+ str(self.id)
 
 class PedidoItem(models.Model):
     orden = models.ForeignKey(Pedido, on_delete=models.CASCADE, null=True)

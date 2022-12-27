@@ -21,7 +21,7 @@ class Producto(models.Model):
     # Modelo que hace referencia a un producto de la tienda
     nombre_prod = models.CharField(max_length=100, unique=True) # Nombre de producto
     descripcion = models.TextField(max_length=500) # Descripcion de producto
-    precio = models.IntegerField()  # Precio de producto
+    precio = models.FloatField()  # Precio de producto
     imagen = models.ImageField(upload_to='productos/nuevos',blank=True,null=True)  # Imagen de producto
     stock = models.IntegerField()   # Stock de producto
     is_available = models.BooleanField(default=True)    # Disponibilidad de producto

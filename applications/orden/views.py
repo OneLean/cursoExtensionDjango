@@ -54,7 +54,20 @@ def crear_pedido(request):
 def pedidos(request):
     itemsP = Pedido.objects.filter(usuario=request.user)
 
-    context = {'pedidos': itemsP
-                }
+    context = {
+        'pedidos': itemsP,
+    }
 
     return render(request,'pedido/mostrarPedidos.html',context)
+
+def pedidosItem(request,id):
+    itemsP = PedidoItem.objects.filter(usuario=request.user,orden__id=id)
+
+    print(itemsP)
+
+    context = {
+        'pedidos': itemsP,
+        'id_pedido':id,
+    }
+
+    return render(request,'pedido/mostrarItemsPedido.html',context)
