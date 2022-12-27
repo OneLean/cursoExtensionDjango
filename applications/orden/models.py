@@ -13,7 +13,7 @@ class Pedido(models.Model):
     )
     pago_choices = (
         ('Pendiente','Pendiente'),
-        ('Cancelado','Cancelado'),
+        ('Pagado','Pagado'),
     )
     # Datos del usuario que compra:
     usuario = models.ForeignKey(User,on_delete=models.SET_NULL,null=True,blank=True)

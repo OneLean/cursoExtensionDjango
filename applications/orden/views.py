@@ -13,13 +13,16 @@ def crear_pedido(request):
     total = 0
     impuesto = 0
     for item in items_del_carrito:
-
         total += (item.producto.precio)*(item.quantity)
         print(total)
     
     impuesto = total*0.02
     total_a_pagar = total+impuesto
     print(total_a_pagar)
+
+    context = {
+        'items_del_carrito' : items_del_carrito
+    }
 
     if request.method == 'POST':
         form = pedidoForm(request.POST)
@@ -47,9 +50,11 @@ def crear_pedido(request):
                 datosItem.quantity = item.quantity
                 datosItem.save()
 
+            items_del_carrito.delete()
+
             return redirect('pedidos')
     else:
-        return render(request,'pedido/pedido.html')
+        return render(request,'pedido/pedido.html',context)
 
 def pedidos(request):
     itemsP = Pedido.objects.filter(usuario=request.user)
