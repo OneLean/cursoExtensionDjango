@@ -1,0 +1,65 @@
+{% extends 'home/base.html' %}
+
+{% block page_content %}
+<div class="max-w-7xl mx-auto mt-3">
+    
+    <div class="overflow-x-auto relative shadow-lg sm:rounded-lg">
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <caption class="p-5 text-lg font-semibold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
+                Tus pedidos
+                <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">
+                    Aquí puedes ver los pedidos que has realizado junto con los productos asociados a ellos.
+                </p>
+            </caption>
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-800 dark:text-gray-400 dark:border-y-2 dark:border-gray-600">
+                <tr>
+                    <th scope="col" class="py-3 px-6">
+                        ID Pedido
+                    </th>
+                    <th scope="col" class="py-3 px-6">
+                        Importe
+                    </th>
+                    <th scope="col" class="py-3 px-6">
+                        Estado
+                    </th>
+                    <th scope="col" class="py-3 px-6">
+                        Estado del Pago
+                    </th>
+                    <th scope="col" class="py-3 px-6">
+                        Ver
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in pedidos %}
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{i.id}}
+                    </th>
+                    <td class="py-4 px-6">
+                        {{i.total}}
+                    </td>
+                    <td class="py-4 px-6">
+                        {{i.estado}}
+                    </td>
+                    <td class="py-4 px-6">
+                        {{i.pago}}
+                    </td>
+                    <td class="py-4 px-6">
+                        <a href="{% url 'itemsPedido' i.id %}" class="font-medium text-gray-700 dark:text-gray-400 hover:underline">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                              </svg>
+                        </a>
+                    </td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+{% endblock %}

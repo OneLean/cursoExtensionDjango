@@ -1,0 +1,35 @@
+
+{% include 'home/onlyBarMarket.html' %}
+
+{% block page_content %}
+
+<div
+  class="
+    flex
+    items-center
+    justify-center
+  "
+>
+  <div class="px-40 py-20 bg-white dark:bg-gray-800 rounded-md shadow-xl">
+    <div class="flex flex-col items-center">
+      <h1 class="font-bold text-red-500 text-9xl">403</h1>
+
+      <h6 class="mb-2 text-2xl font-bold text-center text-gray-800 dark:text-gray-300 md:text-3xl">
+        <span class="text-red-500">Ups!</span> No tienes acceso
+      </h6>
+
+      <p class="mb-8 text-center text-gray-500 md:text-lg">
+        No tienes permisos para acceder a esta página.
+      </p>
+
+      <a
+        href="{% url 'home' %}"
+        class="px-6 py-2 text-sm font-semibold text-white bg-blue-700 rounded-sm"
+        >Volver</a
+      >
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,271 @@
+<!--
+    AQUI SE ENCUENTRA EL CODIGO DE LA BARRA DE NAVEGACION
+    QUE SE INCRUSTA EN EL HOME.HTML
+-->
+<nav class="shadow-lg ">
+    <div class="bg-white dark:bg-gray-800 dark:border-gray-600">
+      <!-- ESTE DIV ES EL LOGO -->
+        <div class="mx-auto max-w-7xl px-3 sm:px-6 py-2 grid grid-cols-3">
+          
+            <a href="http://127.0.0.1:8000/">
+              <div class="ml-3 mt-2 inline-flex">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"  class="stroke-blue-700 w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                </svg>
+                <div class="text-xl mb-4 font-semibold whitespace-nowrap text-slate-600 dark:text-gray-300  pl-3">
+                  PowerMarket
+                </div>
+              </div>
+            </a>
+            
+            <button type="button" class="mb-2 col-start-3 rounded-md bg-white sm:hidden dark:bg-gray-800 dark:text-gray-200 text-gray-400" type="button" data-drawer-target="drawer-navigation" data-drawer-show="drawer-navigation" aria-controls="drawer-navigation">
+              <span class="sr-only">Close menu</span>
+              <!-- Heroicon name: outline/x-mark -->
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="ml-auto w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              </svg>
+            </button>
+
+          <div class="col-start-1 col-span-3 sm:col-start-2 sm:col-span-2 ">
+            <!-- ESTE ES EL BUSCADOR DE PRODUCTOS -->
+            <form action="{% url 'search' %}" method="GET">
+              <div class="flex">
+                  <div class="relative w-full">
+                      <input          type="text"
+                              id="kword"
+                              name="kword"
+                              class="block p-2.5 w-full z-20 text-sm text-gray-900
+                                  bg-gray-50 rounded-lg border-gray-50 border
+                                  border-gray-300 focus:ring-blue-500 focus:border-blue-500
+                                  dark:bg-slate-700 dark:border-gray-700
+                                  dark:text-white"
+                              placeholder="Buscar productos...">
+                      <button         type="submit"
+                              class="absolute top-0 right-0 p-2.5 text-sm font-medium
+                                text-white bg-blue-700 rounded-r-lg border border-blue-700
+                                hover:bg-blue-800 focus:ring-4 focus:outline-none
+                                focus:ring-blue-300">
+                          <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                          <span class="sr-only">Search</span>
+                      </button>
+                  </div>
+              </div>
+            </form>
+          </div>
+        </div>
+    </div>
+
+    <div class="relative bg-white hidden sm:block dark:bg-gray-800 dark:border-gray-600">
+        <div class="mx-auto max-w-7xl px-3 sm:px-6">
+          <div class="flex items-center justify-between border-b-2 border-gray-100 py-2 md:justify-start md:space-x-10">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="stroke-cyan-500 w-6 h-6 sm:hidden">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+            </svg>
+            <div class="sm:hidden font-bold text-slate-600 pl-3">
+              PowerMarket
+            </div>
+            <div>
+              <button data-popover-target="popover-bottom" data-popover-placement="bottom" type="button" class="text-gray-500 *hover:bg-blue-800 font-medium rounded-lg text-sm pl-2 pr-7 py-2.5 dark:text-gray-300 dark:bg-gray-800">
+                Categorias
+                <svg class="absolute top-0 ml-20 mt-6 text-gray-400 dark:text-gray-300 h-4 w-5 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                </svg>
+              </button>
+                <div data-popover id="popover-bottom" role="tooltip" class="absolute z-10 invisible inline-block w-64 text-sm font-light text-gray-500 transition-ease-in duration-300 bg-white border border-gray-200 rounded-lg shadow-2xl opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+                    <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
+                        <h3 class="font-semibold text-gray-900 dark:text-white">Productos por Categorías</h3>
+                    </div>
+                    <!-- Aquí van los links a las categorias -->
+                    <div class="py-2">
+                      
+                      
+                      <a href="{% url 'listaproducto' %}">
+                        <div class="p-2 text-gray-700 hover:bg-gray-100 hover:border-l-4 hover:border-blue-700 hover:text-gray-500 hover:font-medium dark:hover:text-white dark:hover:border-l-4 dark:hover:border-blue-700 dark:hover:bg-gray-700 dark:hover:font-bold dark:text-white transition-ease-in duration-300">
+                          Todos
+                        </div>
+                      </a>
+                      {% for categoria in links %}
+                        
+                      <a href="{{ categoria.get_url }}">
+                        <div class="p-2 text-gray-700 hover:bg-gray-100 hover:border-l-4 hover:border-blue-700 hover:text-gray-500 hover:font-medium dark:hover:text-white dark:hover:border-l-4 dark:hover:border-blue-700 dark:hover:bg-gray-700 dark:hover:font-bold dark:text-white transition-ease-in duration-300">
+                          {{categoria.nombre_cat}}
+                        </div>
+                      </a>
+                      {% endfor %}
+                      
+                      
+                    </div>
+                    <div data-popper-arrow></div>
+                </div>
+              </div>
+              <a href="#" class="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-300 mt-1">Ofertas</a>
+              <a href="{% url 'listaproducto' %}/ropa-y-accesorios" class="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-300 mt-1">Moda</a>
+              <a href="#" class="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-300 mt-1">Ayuda</a>
+              
+
+            
+            <div class="items-center justify-end md:flex md:flex-1 lg:w-0">
+              {% if user.is_authenticated %}
+                <p class="mr-3 hidden lg:block whitespace-nowrap text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-200">
+                  Bienvenido {% if user.is_superuser %}administrador{% endif %} {{user}}
+                </p>
+                <a href="{% url 'pedidos' %}" class="mr-3 whitespace-nowrap text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-200">
+                  Ver pedidos
+                </a>
+                <a href="{% url 'logoutUser' %}" class="mr-3 whitespace-nowrap text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-200">
+                  Cerrar Sesión
+                </a>
+              {% else %}
+                <a href="{% url 'loginUser' %}" class="mr-3 whitespace-nowrap text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-200">Ingresar</a>
+                <a href="{% url 'registerUser' %}" class="transition-all ease-in duration-150
+                inline-flex items-center justify-center
+                whitespace-nowrap rounded-sm
+                px-3 py-2 mr-3 text-sm font-medium text-gray-600
+                hover:text-white hover:bg-blue-700 shadow-sm
+                dark:text-gray-300 dark:hover:text-gray-200 transition ease-in duration-500">Regístrate</a>
+              {% endif %}
+              
+                        <button data-popover-target="popover-bottom2" data-popover-placement="bottom" type="button"  
+                            class="inline-flex items-center 
+                                       justify-center
+                                       bg-white p-3 text-gray-400
+                                       border-gray-500  
+                                       hover:text-blue-700
+                                       dark:bg-gray-800  dark:hover:text-blue-500
+                                       dark:rounded-full dark:border dark:border-gray-500"
+                                       aria-expanded="false">
+                          <span class="sr-only">Open menu</span>
+                          
+                          <!-- Heroicon name: CARRITO -->
+                          
+                          <a href="{% url 'cart' %}" >
+                            <svg aria-hidden="true" class="mr-1 ml-1 w-5 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path></svg>
+                          </a>
+
+                          <div data-popover id="popover-bottom2" role="tooltip" class="absolute z-10 invisible inline-block w-64 text-sm font-light text-gray-500 transition-ease-in duration-300 bg-white border border-gray-200 rounded-lg shadow-2xl opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+                            <div class="px-3 py-2 bg-gray-100 border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
+                                <h3 class="font-semibold text-gray-900 dark:text-white">Tu Carrito de Compras</h3>
+                            </div>
+                            <!-- Aquí van los links a los items del CARRITO -->
+                            <div class="py-2">
+                              {% for item in carrito_items %}
+                                <a href="{{ item.producto.get_url }}">
+                                  <div class="w-full inline-flex p-2 text-gray-700 hover:bg-gray-100 hover:border-blue-700 hover:text-gray-500 dark:hover:text-white dark:hover:border-blue-700 dark:hover:bg-gray-700 dark:text-white transition-ease-in duration-300">
+                                    <div class="bg-white mr-3">
+                                      <img src="{{item.producto.imagen.url}}" style="height:30px;width:30px;object-fit:contain;" alt="">
+                                    </div>
+                                    <div class="flex space-x-96">
+                                      {{item.producto.nombre_prod}} <div class="w-28"></div> ${{item.producto.precio}}
+                                    </div>
+                                  </div>
+                                </a>
+                              {% empty %}
+                                <p>No has seleccionado productos aún.</p>
+                              {% endfor %}
+                              <div class="text-sm text-left ml-3">
+                                <p>Total a Pagar: ${{totalPagar}}</p>
+                              </div>
+                              <a href="{% url 'cart' %}">
+                                <div class="mx-3 mt-2 px-1 py-2 bg-blue-700 shadow-lg hover:bg-blue-800 transition ease-in duration-300 text-white rounded">
+                                  <div class="my-auto">
+                                    Ver detalle
+                                  </div>
+                                </div>
+                              </a>
+                              <hr class="my-1 bg-gray-200 border-0 dark:bg-gray-700">
+                            </div>
+                            <div data-popper-arrow></div>
+                          </div>
+                        </button>
+            </div>
+          </div>
+        </div>
+      </div>
+</nav>
+
+<!-- MENU VERSION MOVIL -->
+<!-- OFF CANVAS (SE ACTIVA MEDIANTE EL BOTON DE MAS ARRIBA) -->
+<div id="drawer-navigation" class="fixed z-40 h-screen p-4 overflow-y-auto bg-white w-80 dark:bg-gray-800" tabindex="-1" aria-labelledby="drawer-navigation-label">
+   <h5 id="drawer-navigation-label" class="text-base font-semibold text-gray-500 uppercase dark:text-gray-400">Menu</h5>
+   <button type="button" data-drawer-dismiss="drawer-navigation" aria-controls="drawer-navigation" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" >
+       <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+       <span class="sr-only">Close menu</span>
+   </button>
+ <div class="py-4 overflow-y-auto">
+     <ul class="space-y-2">
+        <li>
+           <button type="button" class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z" />
+            </svg>
+            
+                 <span class="flex-1 ml-3 text-left whitespace-nowrap">Categorias</span>
+                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+           </button>
+           <ul id="dropdown-example" class="hidden py-2 space-y-2 transition ease-in duration-1000">
+            {% for categoria in links %}
+                 <li>
+                    <a href="{{categoria.get_url}}" class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                      {{categoria.nombre_cat}}
+                    </a>
+                 </li>
+            {%endfor%}
+           </ul>
+        </li>
+        <li>
+           <a href="#" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
+            </svg>
+            <span class="flex-1 ml-3 whitespace-nowrap">Ofertas</span>
+           </a>
+        </li>
+        <li>
+           <a href="{% url 'cart' %}" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+            </svg>
+            <span class="flex-1 ml-3 whitespace-nowrap">Carrito</span>
+           </a>
+        </li>
+        <li>
+           <a href="#" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+            </svg>
+            <span class="flex-1 ml-3 whitespace-nowrap">Ayuda</span>
+           </a>
+        </li>
+        {% if user.is_authenticated %}
+          <li>
+            <a href="{% url 'logoutUser' %}" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
+              </svg>
+              <span class="flex-1 ml-3 whitespace-nowrap">Cerrar sesión</span>
+            </a>
+          </li>
+        {% else %}
+          <li>
+            <a href="{% url 'loginUser' %}" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
+              </svg>
+              <span class="flex-1 ml-3 whitespace-nowrap">Iniciar sesión</span>
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'registerUser' %}" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+              </svg>
+              
+              <span class="flex-1 ml-3 whitespace-nowrap">Regístrate!</span>
+            </a>
+          </li>
+        {% endif %}
+     </ul>
+  </div>
+</div>
+

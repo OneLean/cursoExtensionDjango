@@ -1,0 +1,53 @@
+{% extends 'home/base.html' %}
+
+{% block page_content %}
+<div class="max-w-7xl mx-auto mt-3">
+    
+    <div class="overflow-x-auto relative shadow-lg sm:rounded-lg">
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <caption class="p-5 text-lg font-semibold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
+                Items del pedido N° {{ id_pedido }}
+                <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">
+                    Estos son los productos asociados a este pedido.
+                </p>
+            </caption>
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-800 dark:text-gray-400 dark:border-y-2 dark:border-gray-600">
+                <tr>
+                    <th scope="col" class="py-3 px-6">
+                        ID Producto
+                    </th>
+                    <th scope="col" class="py-3 px-6">
+                        Nombre
+                    </th>
+                    <th scope="col" class="py-3 px-6">
+                        Cantidad
+                    </th>
+                    <th scope="col" class="py-3 px-6">
+                        Precio/Unidad
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in pedidos %}
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{i.producto.id}}
+                    </th>
+                    <td class="py-4 px-6">
+                        {{i.producto.nombre_prod}}
+                    </td>
+                    <td class="py-4 px-6">
+                        {{i.quantity}}
+                    </td>
+                    <td class="py-4 px-6">
+                        {{i.producto.precio}}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+{% endblock %}

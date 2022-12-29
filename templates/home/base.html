@@ -1,0 +1,43 @@
+{% load django_browser_reload %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+  <title>Home - PowerMarket</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" href="{% static 'img/iconoPagina.png' %}">
+
+  <!-- ACÁ VAN LOS ESTILOS PERSONALIZADOS-->
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+  <!-- AQUI INCLUIMOS EL CSS DE FLOWBITE -->
+  <link rel="stylesheet" href="{% static 'css/flowbite.min.css' %}">
+
+  <script src="{% static 'scripts/tailwindCDN.js' %}"></script>
+
+  <!-- AQUI INCLUIMOS LA BARRA DE NAVEGACION -->
+  {% include 'home/navbar.html' %}
+  
+  <body class="mx-auto bg-gray-200 dark:bg-gradient-to-r dark:from-gray-700 dark:via-teal-900 dark:to-emerald-900">
+
+    <!-- AQUI INCLUIMOS EL CONTENIDO GENERICO -->
+    {% block page_content %}
+    
+    {% endblock %}
+    
+
+    {% django_browser_reload_script %}
+  </body>
+  <div class="w-full mx-auto col-span-full">
+  {% include 'home/footer.html' %}
+  </div>
+  <!-- AQUI INCLUIMOS EL JS DE FLOWBITE -->
+  <script src="{% static 'scripts/flowbite.js' %}"></script>
+
+
+  <script type="text/javascript" src="{% static 'scripts/script.js' %}"></script>
+
+
+</html>
