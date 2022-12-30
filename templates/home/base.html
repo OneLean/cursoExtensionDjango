@@ -15,10 +15,14 @@
   <!-- AQUI INCLUIMOS EL CSS DE FLOWBITE -->
   <link rel="stylesheet" href="{% static 'css/flowbite.min.css' %}">
 
+  <!-- Tailwind CSS por CDN -->
   <script src="{% static 'scripts/tailwindCDN.js' %}"></script>
 
   <!-- AQUI INCLUIMOS LA BARRA DE NAVEGACION -->
   {% include 'home/navbar.html' %}
+
+  <!-- JQUERY PARA LAS ALERTAS -->
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
   
   <body class="mx-auto bg-gray-200 dark:bg-gradient-to-r dark:from-gray-700 dark:via-teal-900 dark:to-emerald-900">
 
@@ -35,6 +39,15 @@
   </div>
   <!-- AQUI INCLUIMOS EL JS DE FLOWBITE -->
   <script src="{% static 'scripts/flowbite.js' %}"></script>
+
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      setTimeout(function(){
+        $('#message').fadeOut('slow')
+      }, 700)
+    });
+  </script>
 
 
   <script type="text/javascript" src="{% static 'scripts/script.js' %}"></script>
