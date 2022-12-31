@@ -13,6 +13,9 @@ from django.views.generic.edit import CreateView,UpdateView,DeleteView
 
 from .models import Producto
 
+from applications.valoraciones.forms import ValoracionForm
+
+
 class ProductoListView(ListView):
     model = Producto
     paginate_by = 3
@@ -52,9 +55,14 @@ class detalleProducto(DetailView):
     model = Producto
     template_name= "producto/detalleProducto.html"
 
+    form_class = ValoracionForm  #mg - paso el formulario
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['detalle'] = self.get_object()
+
+        context['form'] = self.form_class() #lo agrego al contexto
+
         return context
 
 class productosModa(ListView):

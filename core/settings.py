@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'applications.producto',
     'applications.usuario',
     'applications.orden',
+    'applications.valoraciones',
 
     #Django-Reload-Browser
     "django_browser_reload",
