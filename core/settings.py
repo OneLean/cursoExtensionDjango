@@ -222,7 +222,7 @@ AUTH_USER_MODEL = 'usuario.User'
 
 LANGUAGE_CODE = 'es-es'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Argentina/Buenos_Aires'
 
 USE_I18N = True
 

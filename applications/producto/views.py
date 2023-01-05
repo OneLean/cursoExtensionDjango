@@ -17,7 +17,7 @@ from .models import Producto
 
 class ProductoListView(ListView):
     model = Producto
-    paginate_by = 3
+    paginate_by = 10
     template_name = 'producto/productos.html'
     ordering= 'nombre_prod'
 
@@ -29,7 +29,7 @@ class ProductoListView(ListView):
 
 class productoPorCategoria(ListView):
     template_name= "producto/productos.html"
-    paginate_by = 3
+    paginate_by = 10
 
     def get_queryset(self):
         slugRecuperado = self.kwargs['categoria_slug']
@@ -41,7 +41,7 @@ class productoPorCategoria(ListView):
 class buscarProducto(ListView):
     model = Producto
     template_name= "producto/productos.html"
-    paginate_by = 3
+    paginate_by = 10
     ordering= 'nombre_prod'
 
     def get_queryset(self):
@@ -62,11 +62,11 @@ class detalleProducto(DetailView):
 class productosModa(ListView):
     model = Producto
     template_name= "producto/productos.html"
-    paginate_by = 3
+    paginate_by = 10
 
     def get_queryset(self):
         listaFiltrada = Producto.objects.filter(
-            Q(categoria__categoria_slug = 'ropa-y-accesorios')|Q(categoria__categoria_slug = 'belleza-e-higiene-personal')
+            Q(categoria__categoria_slug = 'ropa-y-accesorios')or Q(categoria__categoria_slug = 'perfumes-y-belleza')
         )
         return listaFiltrada
 

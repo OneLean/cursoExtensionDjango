@@ -8,7 +8,7 @@ class itemsDelPedido(admin.TabularInline):
     extra = 0
 
 class PedidoAdmin(admin.ModelAdmin):
-    list_display = ['id','last_name', 'telefono','ciudad','total','estado','pago']
+    list_display = ['id','last_name', 'telefono','ciudad','fecha','total','estado','pago']
     list_filter = ['estado']
     search_fields =['id','last_name','telefono','ciudad']
     list_per_page = 10

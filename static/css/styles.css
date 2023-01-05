@@ -1,5 +1,5 @@
 .module {
-    width: 100%;
+    width: 10px;
     margin: 0 0 1em 0;
     overflow: hidden;
   }
@@ -13,5 +13,19 @@
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
   }
-
+  .modulecarrito {
+    width: 200px;
+    margin: 0 0 1em 0;
+    overflow: hidden;
+  }
+  
+  .modulecarrito p {
+    margin: 0;
+  }
+  
+  .line-clamp-carrito {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
   

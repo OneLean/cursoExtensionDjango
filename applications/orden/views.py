@@ -43,6 +43,8 @@ def crear_pedido(request):
             datos.save()
 
             for item in items_del_carrito:
+                item.producto.stock -= 2
+                print(item.producto.stock)
                 datosItem = PedidoItem()
                 datosItem.orden = datos
                 datosItem.usuario = request.user
@@ -57,7 +59,7 @@ def crear_pedido(request):
         return render(request,'pedido/pedido.html',context)
 
 def pedidos(request):
-    itemsP = Pedido.objects.filter(usuario=request.user)
+    itemsP = Pedido.objects.filter(usuario=request.user).order_by('-fecha')
 
     context = {
         'pedidos': itemsP,
