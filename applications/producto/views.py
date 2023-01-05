@@ -58,6 +58,8 @@ class detalleProducto(DetailView):
     template_name= "producto/detalleProducto.html"
 
     form_class = ValoracionForm  #mg - paso el formulario
+
+
     
 
     def get_context_data(self, **kwargs):
@@ -66,16 +68,19 @@ class detalleProducto(DetailView):
 
         context['form'] = self.form_class() #lo agrego al contexto
         context['reviews'] = ValoracionProducto.objects.filter(producto=self.object.id).order_by('-created_at')
+
+        total = 0
+        cant = 0
+        promedio = 0
+        queryset = ValoracionProducto.objects.filter(producto=self.object.id)
+        for v in queryset:
+            total += int(v.valoracion)
+            cant += 1
+        promedio = int(round(total / cant,0))
   
- #       context['totalvaloracion'] = self.getTotalValor(self)
+        context['totalvaloracion'] = promedio
 
         return context
-
-    # def getTotalValor(self, **kwargs):
-    #      for valoracion in ValoracionProducto:
-    #          total += (valoracion)
-    #          cant += 1
-    #      return total / cant
 
 
 class productosModa(ListView):
