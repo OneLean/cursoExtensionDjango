@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from applications.valoraciones.views import guardar_valoracion
 
 from .views import (ProductoListView,buscarProducto,
                     detalleProducto,productoPorCategoria,
@@ -18,6 +19,10 @@ urlpatterns = [
 
 
     path('store/moda/', productosModa.as_view(), name='moda'),
+
+    
+
+   
 
 
 ]

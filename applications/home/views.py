@@ -36,5 +36,12 @@ class Error404View(TemplateView):
 
 class Error403View(TemplateView):
     template_name = "home/error403.html"
+    
+def ayuda(request):
+    return render(request, 'home/ayuda.html', {})    
 
+def quienessomos(request):
+    return render(request, 'home/quienessomos.html', {})
+    
 # Aquí tambien se podria agregar el error 500 por ejemplo...
+

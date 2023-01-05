@@ -13,6 +13,10 @@ from django.views.generic.edit import CreateView,UpdateView,DeleteView
 
 from .models import Producto
 
+
+from applications.valoraciones.forms import ValoracionForm
+
+from applications.valoraciones.models import ValoracionProducto
 # FUNCIONES DE VISTAS QUE HACN CONSULTAS A LA BASE DE DATOS
 
 class ProductoListView(ListView):
@@ -54,10 +58,31 @@ class detalleProducto(DetailView):
     model = Producto
     template_name= "producto/detalleProducto.html"
 
+    form_class = ValoracionForm  #mg - paso el formulario
+
+
+    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['detalle'] = self.get_object()
+
+        context['form'] = self.form_class() #lo agrego al contexto
+        context['reviews'] = ValoracionProducto.objects.filter(producto=self.object.id).order_by('-created_at')
+
+        total = 0
+        cant = 0
+        promedio = 0
+        queryset = ValoracionProducto.objects.filter(producto=self.object.id)
+        for v in queryset:
+            total += int(v.valoracion)
+            cant += 1
+        promedio = int(round(total / cant,0))
+  
+        context['totalvaloracion'] = promedio
+
         return context
+
 
 class productosModa(ListView):
     model = Producto

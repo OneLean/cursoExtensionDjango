@@ -8,6 +8,8 @@ from django.conf.urls import handler404
 
 urlpatterns = [
     path('', inicio.as_view(), name="home"),
+    path('ayuda/',ayuda,name="ayuda"),
+    path('quienessomos/',quienessomos,name="quienessomos"),
 ]
 
 
