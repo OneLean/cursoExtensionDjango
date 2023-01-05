@@ -2,7 +2,24 @@
 {% load static %}
 
 {% block page_content%}
-
+<style type="text/css">
+    .modulecarrito {
+        width: 200px;
+        margin: 0 0 1em 0;
+        overflow: hidden;
+      }
+      
+      .module p {
+        margin: 0;
+      }
+      
+      .line-clamp-carrito {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+      }
+    
+</style>
 <div class="mx-auto max-w-7xl mt-3 grid grid-cols-12 gap-4">
 {% if carrito_items %}
     <div class="overflow-x-auto relative sm:rounded-lg col-span-full lg:col-span-9">
@@ -33,7 +50,7 @@
                         <div class="bg-white">
                             <img src="{{item.producto.imagen.url}}" style="height:70px;width:70px;object-fit:contain;" alt="">
                         </div>
-                        <div class="my-auto">{{item.producto.nombre_prod}}</div>
+                        <div class="my-auto"><p class="modulecarrito line-clamp-carrito">{{item.producto.nombre_prod}}</p></div>
                     </th>
                     <td class="py-4 px-6">
                         {{item.producto.categoria.nombre_cat}}

@@ -26,6 +26,9 @@
                         Estado del Pago
                     </th>
                     <th scope="col" class="py-3 px-6">
+                        Fecha
+                    </th>
+                    <th scope="col" class="py-3 px-6">
                         Ver
                     </th>
                 </tr>
@@ -37,13 +40,16 @@
                         {{i.id}}
                     </th>
                     <td class="py-4 px-6">
-                        {{i.total}}
+                        $ {{i.total}}
                     </td>
                     <td class="py-4 px-6">
                         {{i.estado}}
                     </td>
                     <td class="py-4 px-6">
                         {{i.pago}}
+                    </td>
+                    <td class="py-4 px-6">
+                        {{i.fecha}}
                     </td>
                     <td class="py-4 px-6">
                         <a href="{% url 'itemsPedido' i.id %}" class="font-medium text-gray-700 dark:text-gray-400 hover:underline">

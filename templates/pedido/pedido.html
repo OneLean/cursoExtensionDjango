@@ -1,7 +1,24 @@
 {% extends 'home/base.html' %}
 
 {% block page_content %}
-
+<style type="text/css">
+    .modulecarrito {
+        width: 100px;
+        margin: 0 0 1em 0;
+        overflow: hidden;
+      }
+      
+      .modulecarrito p {
+        margin: 0;
+      }
+      
+      .line-clamp-carrito {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
+    
+</style>
 <div class="max-w-7xl grid grid-cols-2 mx-auto gap-6">
     <form method="post" class="cols-span-1 mt-2 p-4 border-t-4 border-blue-700 rounded-lg bg-white shadow-lg dark:bg-gray-800">{% csrf_token %}
     <p class="text-2xl text-gray-700 dark:text-white text-xl mb-4 mt-2">Datos de facturación</p>
@@ -78,7 +95,7 @@
                     <div class="bg-white">
                         <img src="{{item.producto.imagen.url}}" style="height:70px;width:70px;object-fit:contain;" alt="">
                     </div>
-                    <div class="my-auto">{{item.producto.nombre_prod}}</div>
+                    <div class="my-auto modulecarrito line-clamp-carrito">{{item.producto.nombre_prod}}</div>
                 </th>
                 <td class="py-4 px-6">
                     {{item.producto.categoria.nombre_cat}}
