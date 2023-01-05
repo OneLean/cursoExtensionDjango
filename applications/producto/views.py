@@ -13,6 +13,8 @@ from django.views.generic.edit import CreateView,UpdateView,DeleteView
 
 from .models import Producto
 
+# FUNCIONES DE VISTAS QUE HACN CONSULTAS A LA BASE DE DATOS
+
 class ProductoListView(ListView):
     model = Producto
     paginate_by = 3
@@ -69,6 +71,8 @@ class productosModa(ListView):
         return listaFiltrada
 
 from django.contrib.auth.mixins import PermissionRequiredMixin
+
+# CRUD DE PRODUCTOS SOLO PARA ADMINISTRADORES
 
 class crearProducto(PermissionRequiredMixin, CreateView):
     template_name = "producto/crear.html"
