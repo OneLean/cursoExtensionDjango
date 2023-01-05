@@ -31,3 +31,10 @@ class Error404View(TemplateView):
 
 class Error403View(TemplateView):
     template_name = "home/error403.html"
+
+
+def ayuda(request):
+    return render(request, 'home/ayuda.html', {})    
+
+def quienessomos(request):
+    return render(request, 'home/quienessomos.html', {})       

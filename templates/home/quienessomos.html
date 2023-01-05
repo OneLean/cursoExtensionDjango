@@ -1,0 +1,64 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+
+{% block page_content %}
+
+<!-- AQUI INCLUIMOS EL CARROUSEL DE IMAGENES -->
+{% include 'home/carousel.html' %}
+
+<div class="my-6 mt-2 border-gray-200 mx-auto w-11/12 max-w-7xl lg:my-8">
+<hr class="my-8 h-px bg-gray-200 border-1 dark:bg-gray-900">
+<p class="my-4 text-gray-500 text-2xl font-bold dark:text-gray-300">QUIENES SOMOS</p>
+</div>
+<section class="mt-2 mx-auto max-w-7xl px-3 sm:px-6 py-2 container ">
+<div>
+  <p class="mt-2">Somos una empresa líder en ventas online en Salta y Jujuy, con un aval de 10 años de trayectoria,
+    con más de 240 sucursales en todo el país. Hoy somos Powermarket+ porque entendemos que la transformación es 
+    un estado permanente. Incorporamos un marketplace propio online y seguimos trabajando para brindar un servicio de excelencia
+</p>
+  
+        
+</div>
+
+{% block pagination %}
+<nav aria-label="Page navigation example" class="col-span-full mx-auto">
+    <ul class="inline-flex items-center -space-x-px">
+      {% if page_obj.has_previous %}
+      <li>
+        <a href="?page={{ page_obj.previous_page_number }}" 
+            class="block px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+          <span class="sr-only">Previous</span>
+          <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+        </a>
+      </li>
+      {% endif %}
+
+      
+      {% for pagina in paginator.page_range %}
+        
+      
+        <li>
+            <a href="?page={{pagina}}" aria-current="page" class="z-10 px-3 py-2 leading-tight text-blue-600 
+            border border-blue-300 bg-blue-50 hover:bg-blue-100
+            hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 
+            dark:text-white">{{ pagina }}</a>
+        </li>
+        
+        {% endfor %}
+      {% if page_obj.has_next %}
+      <li>
+        <a href="?page={{ page_obj.next_page_number }}" class="block px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+          <span class="sr-only">Next</span>
+          <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+        </a>
+      </li>
+      {% endif %}
+    </ul>
+  </nav>
+
+
+</section>
+{% endblock %}
+
+{% endblock %}
