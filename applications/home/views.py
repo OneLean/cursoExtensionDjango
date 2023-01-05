@@ -37,4 +37,4 @@ def ayuda(request):
     return render(request, 'home/ayuda.html', {})    
 
 def quienessomos(request):
-    return render(request, 'home/quienessomos.html', {})       
+    return render(request, 'home/quienessomos.html', {})
