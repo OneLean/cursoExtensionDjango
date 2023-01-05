@@ -15,6 +15,8 @@ from .models import Producto
 
 from applications.valoraciones.forms import ValoracionForm
 
+from applications.valoraciones.models import ValoracionProducto
+
 
 class ProductoListView(ListView):
     model = Producto
@@ -56,14 +58,25 @@ class detalleProducto(DetailView):
     template_name= "producto/detalleProducto.html"
 
     form_class = ValoracionForm  #mg - paso el formulario
+    
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['detalle'] = self.get_object()
 
         context['form'] = self.form_class() #lo agrego al contexto
+        context['reviews'] = ValoracionProducto.objects.filter(producto=self.object.id).order_by('-created_at')
+  
+ #       context['totalvaloracion'] = self.getTotalValor(self)
 
         return context
+
+    # def getTotalValor(self, **kwargs):
+    #      for valoracion in ValoracionProducto:
+    #          total += (valoracion)
+    #          cant += 1
+    #      return total / cant
+
 
 class productosModa(ListView):
     model = Producto

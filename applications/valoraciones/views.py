@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.http import HttpResponse
 from applications.producto.models import Producto
@@ -19,4 +19,4 @@ def guardar_valoracion(request,id):
         resenia = request.POST['resenia'],
     )
 
-    return JsonResponse({'bool':True})
+    return redirect('store/'+ producto.categoria.categoria_slug +'/'+ producto.slug)

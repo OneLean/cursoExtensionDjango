@@ -33,6 +33,9 @@ INSTALLED_APPS = [
     # PERSONALIZACION DEL ADMIN CON JAZZMIN
     'jazzmin',
 
+    #font awesome
+    'fontawesomefree',
+
     # APLICACIONES DE DJANGO
     'django.contrib.admin',
     'django.contrib.auth',

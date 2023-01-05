@@ -20,7 +20,7 @@ urlpatterns = [
 
     path('store/moda/', productosModa.as_view(), name='moda'),
 
-    path('guardar-valoracion/<int:id>', guardar_valoracion, name='guardar-valoracion'),
+    
 
    
 
