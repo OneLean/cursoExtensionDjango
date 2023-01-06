@@ -77,6 +77,8 @@ class detalleProducto(DetailView):
         for v in queryset:
             total += int(v.valoracion)
             cant += 1
+        if cant == 0:
+            cant=1
         promedio = int(round(total / cant,0))
   
         context['totalvaloracion'] = promedio

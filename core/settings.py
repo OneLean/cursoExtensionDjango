@@ -34,7 +34,7 @@ INSTALLED_APPS = [
     'jazzmin',
 
     #font awesome
-    'fontawesomefree',
+    #'fontawesomefree',
 
     # APLICACIONES DE DJANGO
     'django.contrib.admin',
